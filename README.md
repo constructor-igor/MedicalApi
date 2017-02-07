@@ -16,3 +16,6 @@ https://www.quora.com/What-is-the-best-API-for-medical-diagnosis
 https://www.drchrono.com/api/
 
 https://www.babylonhealth.com
+
+**http://apimedic.com/**
+![image](https://cloud.githubusercontent.com/assets/1849690/22407188/6a6a6370-e66a-11e6-9c4f-29fb99879bc6.png)

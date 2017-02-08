@@ -3,9 +3,7 @@ Medical API feasibility
 
 <B>References</B>
 
-webmd.com
-symptoms checker
-
+* symptoms checker "http://www.webmd.com/"
 * http://apimedic.com/ (samples in sources: https://github.com/priaid-eHealth/symptomchecker)
 * http://sym.doctors.co.il/sites/sym.doctors.co.il/html/sc.html#frame-4th
 * http://infermedica.com

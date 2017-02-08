@@ -1,11 +1,11 @@
 # MedicalApi
 Medical API feasibility
 
+[Plan](docs/plan.md)
+
 <B>References</B>
 
-webmd.com
-symptoms checker
-
+* symptoms checker "http://www.webmd.com/"
 * http://apimedic.com/ (samples in sources: https://github.com/priaid-eHealth/symptomchecker)
 * http://sym.doctors.co.il/sites/sym.doctors.co.il/html/sc.html#frame-4th
 * http://infermedica.com
@@ -17,4 +17,4 @@ symptoms checker
 
 * https://www.babylonhealth.com
 
-[ApiuMedic](docs/ApiMedic.md)
+[ApiMedic](docs/ApiMedic.md)

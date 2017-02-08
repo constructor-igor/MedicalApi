@@ -47,7 +47,7 @@ GET|description
 ```
 
 ```c#
-public class Diagnosis
+    public class Diagnosis
     {
         public class DiagnosisIssue
         {

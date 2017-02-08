@@ -1,6 +1,6 @@
 **Sprint 1** (08/02 - 22/02)
 - [x] Create github repository.
-- [ ] :running: Sprint planning.
+- [x] Plan sprint tasks.
 - [ ] :running: Review ApiMedic model (API, data content, data links).
 - [ ] Review sample of priaid [issue #3](https://github.com/constructor-igor/MedicalApi/issues/3).
 - [ ] Select and review additional(-s) "Medic API" model.

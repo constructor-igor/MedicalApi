@@ -31,3 +31,49 @@ GET|description
         }
     }
 ```
+
+```c#
+    public class Issue
+    {
+        public readonly int ID;
+        public readonly string Name;
+
+        public Issue(int id, string name)
+        {
+            ID = id;
+            Name = name;
+        }
+    }
+```
+
+```c#
+public class Diagnosis
+    {
+        public class DiagnosisIssue
+        {
+            public readonly int ID;
+            public readonly string Name;
+            public readonly string ProfName;
+            public readonly string Icd;
+            public readonly string IcdName;
+            public readonly double Accuracy;
+
+            public DiagnosisIssue(int id, string name, string profName, string icd, string icdName, double accuracy)
+            {
+                ID = id;
+                Name = name;
+                ProfName = profName;
+                Icd = icd;
+                IcdName = icdName;
+                Accuracy = accuracy;
+            }
+        }
+
+        public readonly DiagnosisIssue Issue;
+
+        public Diagnosis(DiagnosisIssue issue)
+        {
+            Issue = issue;
+        }
+    }
+```

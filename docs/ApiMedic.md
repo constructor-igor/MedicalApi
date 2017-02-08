@@ -17,3 +17,17 @@ GET|description
 /symptoms/0/man | Symptoms in body sublocations can be called to receive all the symptoms in a body sub location.
 /redflag | Red flag texts are recommendations to the patient for a higher urgency or severeness of the possible symptoms. As an example a patient with pain in the breast might have a heart attack and therefore the patient should be warned about the urgency and severeness of the matter.
 ------------
+
+```c#
+    public class Symptom
+    {
+        public readonly int ID;
+        public readonly string Name;
+
+        public Symptom(int id, string name)
+        {
+            ID = id;
+            Name = name;
+        }
+    }
+```

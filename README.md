@@ -17,4 +17,4 @@ symptoms checker
 
 * https://www.babylonhealth.com
 
-[ApiuMedic](docs/ApiMedic.md)
+[ApiMedic](docs/ApiMedic.md)

@@ -1,6 +1,8 @@
 # MedicalApi
 Medical API feasibility
 
+[Plan](docs/plan.md)
+
 <B>References</B>
 
 * symptoms checker "http://www.webmd.com/"

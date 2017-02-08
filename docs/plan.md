@@ -1,4 +1,4 @@
-**Sprint 1** (09/02 - 23/02)
+**Sprint 1** (08/02 - 22/02)
 - [x] Create github repository.
 - [ ] :running: Sprint planning.
 - [ ] :running: Review ApiMedic model (API, data content, data links).

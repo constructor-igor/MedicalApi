@@ -18,6 +18,29 @@ GET|description
 /redflag | Red flag texts are recommendations to the patient for a higher urgency or severeness of the possible symptoms. As an example a patient with pain in the breast might have a heart attack and therefore the patient should be warned about the urgency and severeness of the matter.
 ------------
 
+
+https://apimedic.net/mysymptomchecker/kb/sandbox-healthservice/
+
+Domain:
+
+* Symptom
+* Issue (Illness)
+* Diagnosis (list of "issues" with accuracy)  [symptoms, age, gender] ==> Diagnosis
+  * Includes ICD (International Classification of Diseases)
+* Specialisation (~wide list of potential diagnosis with accuracy)
+* Body location
+* Body sublocation
+
+API:
+
+* Symptoms in body sublocations: ("man|woman|boy|girl"(MWBG) x "sublocation id" ==> list of symptoms, including "red flag")
+* Issue info: Issue Id ==> description
+* Proposed symptoms: symptoms, gender, age ==> list of symptoms
+* Red Flag text: symptom => red flag text (important/urgent message)
+* Get specialisation: symptoms x gender x age => list of specialisation
+
+>The diagnosis is the core function of the symptom-checker to compute the potential health issues based on a set of symptoms, gender and >age, but instead of getting computed diagnosis, you can also get list of suggested specialisations for calulated diseases
+
 ```c#
     public class Symptom
     {

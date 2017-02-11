@@ -2,7 +2,7 @@
 - [x] Create github repository.
 - [x] Plan sprint tasks.
 - [x] Review ApiMedic model (API, domain).
-- [x] Review sample of priaid [issue #3](https://github.com/constructor-igor/MedicalApi/issues/3).
+- [x] Review sample (incuding basis of simple symptom checker) of priaid [issue #3](https://github.com/constructor-igor/MedicalApi/issues/3).
 - [ ] :running: Select ([#7 Review API "infermedica"](https://github.com/constructor-igor/MedicalApi/issues/7)) and review additional(-s) "Medic API" model
 - [ ] Suggest 'ideal' model, which supports our vision of Mecial API.
 - [ ] Define exact scope of first feasibility program.

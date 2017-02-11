@@ -15,8 +15,9 @@ namespace ApiMedic
             var appSettings = ConfigurationManager.AppSettings;
             string token = appSettings["Token"];
             IMedicalApiDataProvider dataProvider = new WebMedicalApiDataProvider(token);
-//            IMedicalApiDataProvider storeToCacheProvider = new StoreToCacheApiDataProvider(dataProvider);
-//            storeToCacheProvider.GetSymptoms();
+            IMedicalApiDataProvider storeToCacheProvider = new StoreToCacheApiDataProvider(dataProvider);
+            storeToCacheProvider.GetSymptoms();
+            storeToCacheProvider.GetIssues();
             IMedicalApiDataProvider localProvider = new LoadFromCacheApiDataProvider();
 
             IMedicalApi medicalApi = new MedicalApi(localProvider);

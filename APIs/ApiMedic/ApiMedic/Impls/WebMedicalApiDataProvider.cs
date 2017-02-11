@@ -1,6 +1,5 @@
 using System;
 using System.Net;
-using System.Runtime.CompilerServices;
 using ApiMedic.Interfaces;
 
 namespace ApiMedic.Impls
@@ -21,6 +20,11 @@ namespace ApiMedic.Impls
         {
             string getSymptoms = String.Format(@"https://sandbox-healthservice.priaid.ch/symptoms?token={0}&language={1}&format={2}", m_token, m_language, m_format);
             return DownloadString(getSymptoms);
+        }
+        public string GetIssues()
+        {
+            string getIssues = String.Format(@"https://sandbox-healthservice.priaid.ch/issues?token={0}&language={1}&format={2}", m_token, m_language, m_format);
+            return DownloadString(getIssues);
         }
         #endregion
         public static string DownloadString(string address)

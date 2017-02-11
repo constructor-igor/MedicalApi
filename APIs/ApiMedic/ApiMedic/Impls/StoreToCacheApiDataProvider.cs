@@ -19,6 +19,12 @@ namespace ApiMedic.Impls
             File.WriteAllText(@"..\..\cache\symptomsResponse.json", symptomsResponse);
             return symptomsResponse;            
         }
+        public string GetIssues()
+        {
+            string issuesResponse = m_actualProvider.GetIssues();
+            File.WriteAllText(@"..\..\cache\issuesResponse.json", issuesResponse);
+            return issuesResponse;
+        }
         #endregion
     }
 }

@@ -11,6 +11,11 @@ namespace ApiMedic.Impls
             string symptomsResponse = File.ReadAllText(@"..\..\cache\symptomsResponse.json");
             return symptomsResponse;
         }
+        public string GetIssues()
+        {
+            string issuesResponse = File.ReadAllText(@"..\..\cache\issuesResponse.json");
+            return issuesResponse;
+        }
         #endregion
     }
 }

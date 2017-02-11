@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTypes\BodySubLocation.cs" />
+    <Compile Include="DataTypes\Diagnosis.cs" />
+    <Compile Include="DataTypes\Issue.cs" />
+    <Compile Include="DataTypes\IssueInfo.cs" />
     <Compile Include="Impls\LoadFromCacheApiDataProvider.cs" />
     <Compile Include="Impls\StoreToCacheApiDataProvider.cs" />
     <Compile Include="Interfaces\IMedicalApi.cs" />

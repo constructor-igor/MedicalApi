@@ -18,3 +18,4 @@ Medical API feasibility
 * https://www.babylonhealth.com
 
 [ApiMedic](docs/ApiMedic.md)
+[Infermedica] (docs/Infermedica.md)

@@ -31,9 +31,21 @@ Explain |
  | POST /explain
 Info | 
  | GET /info
-Lab_tests | 
+Lab_tests |
  | GET /lab_tests
  | GET /lab_tests/{id}
+Lookup |
+ | GET /lookup
+Parse |
+ | POST /parse
+Risk_factors |
+ | GET /risk_factors
+ | GET /risk_factors/{id}
+Search |
+ | GET /search
+Symptoms | 
+ | GET /symptoms
+ | GET /symptoms/{id}
 ------------------
 
 It's very important to understand that the /diagnosis endpoint is stateless. This means that the API does not track the state or progress of cases it receives, so with each request you need to send all the information gathered about the patient to this point

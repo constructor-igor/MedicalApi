@@ -2,7 +2,7 @@ Infermedica
 
 https://developer.infermedica.com/docs/quickstart
 
-Medical concept:
+Medical concept (**domain**):
 * Conditions
 * Symptoms
 * Lab tests and lab test results

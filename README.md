@@ -3,7 +3,7 @@ Medical API feasibility
 
 [Plan](docs/plan.md)
 
-<B>References</B>
+<B>References:</B>
 
 * symptoms checker "http://www.webmd.com/"
 * http://apimedic.com/ (samples in sources: https://github.com/priaid-eHealth/symptomchecker)
@@ -17,6 +17,6 @@ Medical API feasibility
 
 * https://www.babylonhealth.com
 
-Medical data providers:
+<B>Medical data providers:<B>
 * [ApiMedic](docs/ApiMedic.md)
 * [Infermedica] (docs/Infermedica.md)

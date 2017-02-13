@@ -18,5 +18,6 @@ Medical API feasibility
 * https://www.babylonhealth.com
 
 <B>Medical data providers:<B>
+
 * [ApiMedic](docs/ApiMedic.md)
 * [Infermedica] (docs/Infermedica.md)

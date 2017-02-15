@@ -14,9 +14,19 @@ namespace InfermedicaAPI.Client.Demo
     {
         static void Main(string[] args)
         {
-            //FirstRequestDemo_HttpClient();
-            FirstRequestDemo_WebRequest();
-            //FirstRequestDemo_Info_WebRequest();
+            GetInfoSample();
+//            //FirstRequestDemo_HttpClient();
+//            FirstRequestDemo_WebRequest();
+//            //FirstRequestDemo_Info_WebRequest();
+        }
+
+        static void GetInfoSample()
+        {
+            string appId = ConfigurationManager.AppSettings["App-Id"];
+            string appKey = ConfigurationManager.AppSettings["App-Key"];
+            Infermedica infermedica = new Infermedica(appId, appKey);
+            InfermedicaInfo info = infermedica.GetInfo();
+            Console.WriteLine("Last update model: {0}, Conditions count: {1}", info.LastModelUpdate, info.ConditionsCount);
         }
 
         // https://developer.infermedica.com/docs/quickstart

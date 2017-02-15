@@ -26,7 +26,7 @@ Domain:
 * Symptom
 * Issue (Illness)
 * Diagnosis (list of "issues" with accuracy)  [symptoms, age, gender] ==> Diagnosis
-  * Includes ICD (International Classification of Diseases)
+  * Includes ICD ([International Classification of Diseases](https://en.wikipedia.org/wiki/International_Statistical_Classification_of_Diseases_and_Related_Health_Problems))
 * Specialisation (~wide list of potential diagnosis with accuracy)
 * Body location
 * Body sublocation

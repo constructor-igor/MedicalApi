@@ -39,13 +39,13 @@ Lookup |
 Parse |
  | POST /parse
 Risk_factors |
- | GET /risk_factors
- | GET /risk_factors/{id}
+ | GET /risk_factors **including url to image**
+ | GET /risk_factors/{id} **including url to image**
 Search |
  | GET /search
 Symptoms | 
- | GET /symptoms
- | GET /symptoms/{id}
+ | GET /symptoms **including url to image**
+ | GET /symptoms/{id} **including url to image**
 ------------------
 
 It's very important to understand that the /diagnosis endpoint is stateless. This means that the API does not track the state or progress of cases it receives, so with each request you need to send all the information gathered about the patient to this point

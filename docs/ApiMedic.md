@@ -34,7 +34,7 @@ Domain:
 API:
 
 * Symptoms in body sublocations: ("man|woman|boy|girl"(MWBG) x "sublocation id" ==> list of symptoms, including "red flag")
-* Issue info: Issue Id ==> description
+* Issue info: Issue Id ==> description, list of possible symptoms
 * Proposed symptoms: symptoms, gender, age ==> list of symptoms
 * Red Flag text: symptom => red flag text (important/urgent message)
 * Get specialisation: symptoms x gender x age => list of specialisation

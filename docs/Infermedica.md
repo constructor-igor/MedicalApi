@@ -47,7 +47,7 @@ Symptoms |
  | GET /symptoms **including url to image**
  | GET /symptoms/{id} **including url to image**
  Triage |
- | GET /triage 
+ | POST /triage 
 ------------------
 NOTES:
 It's very important to understand that the /diagnosis endpoint is stateless. This means that the API does not track the state or progress of cases it receives, so with each request you need to send all the information gathered about the patient to this point

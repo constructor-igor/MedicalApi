@@ -46,7 +46,7 @@ Search |
 Symptoms | 
  | GET /symptoms **including url to image**
  | GET /symptoms/{id} **including url to image**
- Triage
+ Triage |
  | GET /triage 
 ------------------
 NOTES:

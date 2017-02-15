@@ -10,6 +10,15 @@ Medical concept (**domain**):
 
 ```json
 {
+    "updated_at":"2017-02-15T14:04:38Z",
+    "conditions_count":550,
+    "symptoms_count":1175,
+    "risk_factors_count":46,
+    "lab_tests_count":474
+}
+```
+```json
+{
   "updated_at": "2016-11-18T12:19:19Z",
   "conditions_count": 479,
   "symptoms_count": 1103,

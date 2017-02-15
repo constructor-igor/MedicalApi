@@ -7,6 +7,8 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using InfermedicaAPI.Data;
+using InfermedicaAPI.DataProviders;
 
 namespace InfermedicaAPI.Client.Demo
 {
@@ -24,7 +26,7 @@ namespace InfermedicaAPI.Client.Demo
         {
             string appId = ConfigurationManager.AppSettings["App-Id"];
             string appKey = ConfigurationManager.AppSettings["App-Key"];
-            Infermedica infermedica = new Infermedica(appId, appKey);
+            Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
             InfermedicaInfo info = infermedica.GetInfo();
             Console.WriteLine("Last update model: {0}, Conditions count: {1}", info.LastModelUpdate, info.ConditionsCount);
         }

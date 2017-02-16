@@ -2,6 +2,6 @@ namespace InfermedicaAPI.Interfaces
 {
     public interface IInfermedicaDataProvider
     {
-        string GetInfo();
+        string GetRequest(string getName);
     }
 }

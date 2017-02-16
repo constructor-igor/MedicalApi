@@ -17,6 +17,8 @@ namespace InfermedicaAPI.Client.Demo
         static void Main(string[] args)
         {
             GetInfoSample();
+            GetAllConditions();
+            GetAllLabTests();
 //            //FirstRequestDemo_HttpClient();
 //            FirstRequestDemo_WebRequest();
 //            //FirstRequestDemo_Info_WebRequest();
@@ -29,6 +31,23 @@ namespace InfermedicaAPI.Client.Demo
             Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
             InfermedicaInfo info = infermedica.GetInfo();
             Console.WriteLine("Last update model: {0}, Conditions count: {1}", info.LastModelUpdate, info.ConditionsCount);
+        }
+        static void GetAllConditions()
+        {
+            string appId = ConfigurationManager.AppSettings["App-Id"];
+            string appKey = ConfigurationManager.AppSettings["App-Key"];
+            Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
+            List<InfermedicaCondition> conditions = infermedica.GetConditions();
+            Console.WriteLine("Conditions coun: {0}", conditions.Count);
+        }
+        static void GetAllLabTests()
+        {
+            string appId = ConfigurationManager.AppSettings["App-Id"];
+            string appKey = ConfigurationManager.AppSettings["App-Key"];
+            Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
+//            List<InfermedicaCondition> conditions = infermedica.GetConditions();
+//            Console.WriteLine("Conditions coun: {0}", conditions.Count);
+//            //Console.WriteLine("Last update model: {0}, Conditions count: {1}", info.LastModelUpdate, info.ConditionsCount);
         }
 
         // https://developer.infermedica.com/docs/quickstart

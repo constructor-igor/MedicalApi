@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Net;
 using InfermedicaAPI.Interfaces;
@@ -15,9 +16,9 @@ namespace InfermedicaAPI.DataProviders
             m_appKey = appKey;
         }
         #region IInfermedicaDataProvider
-        public string GetInfo()
+        public string GetRequest(string getName)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.infermedica.com/v2/info");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(String.Format("https://api.infermedica.com/v2/{0}", getName));
             httpWebRequest.Method = "GET";
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Headers.Add("App-Id", m_appId);

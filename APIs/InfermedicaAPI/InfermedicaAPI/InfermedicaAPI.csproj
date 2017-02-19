@@ -46,11 +46,13 @@
     <Compile Include="DataProviders\InfermedicaDataCache.cs" />
     <Compile Include="DataProviders\InfermedicaDataProvider.cs" />
     <Compile Include="Data\InfermedicaCondition.cs" />
-    <Compile Include="Data\InfermedicaConvert.cs" />
+    <Compile Include="Data\InfermedicaLabTest.cs" />
+    <Compile Include="Services\InfermedicaConvert.cs" />
     <Compile Include="Interfaces\IInfermedicaDataProvider.cs" />
     <Compile Include="Infermedica.cs" />
     <Compile Include="Data\InfermedicaInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\InfermedicaExport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

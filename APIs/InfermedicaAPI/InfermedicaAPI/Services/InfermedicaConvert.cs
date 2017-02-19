@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using InfermedicaAPI.Data;
 using Newtonsoft.Json.Linq;
 
-namespace InfermedicaAPI.Data
+namespace InfermedicaAPI.Services
 {
     public class InfermedicaConvert
     {
@@ -26,11 +27,21 @@ namespace InfermedicaAPI.Data
             {"moderate", Severity.Moderate},
             {"severe", Severity.Severe}
         };
-        private static readonly Dictionary<string, Sex> sexList = new Dictionary<string, Sex>()
+        private static readonly Dictionary<string, Sex> sexList = new Dictionary<string, Sex>
         {
             {"both", Sex.Both},
             {"male", Sex.Male},
             {"female", Sex.Female}
+        };
+        private static readonly Dictionary<string, InfermedicaLabTest.ItemType> resultTypeList = new Dictionary<string, InfermedicaLabTest.ItemType>
+        {
+            {"very_low", InfermedicaLabTest.ItemType.VeryLow},
+            {"low", InfermedicaLabTest.ItemType.Low},
+            {"normal", InfermedicaLabTest.ItemType.Normal},
+            {"high", InfermedicaLabTest.ItemType.High},
+            {"very_high", InfermedicaLabTest.ItemType.VeryHigh},
+            {"absent", InfermedicaLabTest.ItemType.Absent},
+            {"present", InfermedicaLabTest.ItemType.Present}
         };
 
         public static Prevalence ToPrevalence(string text)
@@ -65,6 +76,10 @@ namespace InfermedicaAPI.Data
         {
             return ToSex(Convert.ToString(text));
         }
+        public static InfermedicaLabTest.ItemType ToResultType(JToken text)
+        {
+            return ConvertTo(text.Value<string>(), resultTypeList);
+        }
 
         public static T ConvertTo<T>(string text, Dictionary<string, T> allValues)
         {
@@ -72,5 +87,6 @@ namespace InfermedicaAPI.Data
                 return allValues[text];
             throw new ArgumentException(String.Format("Unexpected value ({0}) of {1}", text, typeof(T).Name));
         }
+
     }
 }

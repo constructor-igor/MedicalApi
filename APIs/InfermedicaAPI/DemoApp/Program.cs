@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using InfermedicaAPI.Data;
 using InfermedicaAPI.DataProviders;
+using InfermedicaAPI.Services;
 
 namespace InfermedicaAPI.Client.Demo
 {
@@ -38,15 +39,17 @@ namespace InfermedicaAPI.Client.Demo
             string appKey = ConfigurationManager.AppSettings["App-Key"];
             Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
             List<InfermedicaCondition> conditions = infermedica.GetConditions();
-            Console.WriteLine("Conditions coun: {0}", conditions.Count);
+            Console.WriteLine("Conditions count: {0}", conditions.Count);
+            InfermedicaExport.ToCsvFile(@"conditions.csv", conditions);
         }
         static void GetAllLabTests()
         {
             string appId = ConfigurationManager.AppSettings["App-Id"];
             string appKey = ConfigurationManager.AppSettings["App-Key"];
             Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
-//            List<InfermedicaCondition> conditions = infermedica.GetConditions();
-//            Console.WriteLine("Conditions coun: {0}", conditions.Count);
+            List<InfermedicaLabTest> labTests = infermedica.GetLabTests();
+            Console.WriteLine("Lab tests count: {0}", labTests.Count);
+            InfermedicaExport.ToCsvFile(@"labTests.csv", labTests);
 //            //Console.WriteLine("Last update model: {0}, Conditions count: {1}", info.LastModelUpdate, info.ConditionsCount);
         }
 

@@ -46,6 +46,7 @@
     <Compile Include="DataProviders\InfermedicaDataCache.cs" />
     <Compile Include="DataProviders\InfermedicaDataProvider.cs" />
     <Compile Include="Data\InfermedicaCondition.cs" />
+    <Compile Include="Data\InfermedicaConvert.cs" />
     <Compile Include="Interfaces\IInfermedicaDataProvider.cs" />
     <Compile Include="Infermedica.cs" />
     <Compile Include="Data\InfermedicaInfo.cs" />

@@ -20,13 +20,9 @@ namespace InfermedicaAPI.Services
             File.AppendAllLines(targetCsvFile, new List<string>{headerLine});
             foreach (InfermedicaCondition condition in conditions)
             {
-                List<string> body = new List<string>(){condition.Id, condition.Name, String.Join(";", condition.Categories), 
+                List<string> body = new List<string>{condition.Id, condition.Name, String.Join(";", condition.Categories), 
                     condition.Prevalence.ToString(), condition.Acuteness.ToString(), condition.Severity.ToString(), condition.Sex.ToString()};
-                body.AddRange(allExtraKeys.Select(extraKey =>
-                {
-                    string keyValue = condition.Extras.ContainsKey(extraKey) ? condition.Extras[extraKey] : "";
-                    return keyValue;
-                }));
+                body.AddRange(allExtraKeys.Select(extraKey => condition.Extras.ContainsKey(extraKey) ? condition.Extras[extraKey] : ""));
                 string bodyLine = String.Join("\t", body.ToArray());
                 File.AppendAllLines(targetCsvFile, new List<string>{bodyLine});
             }
@@ -41,7 +37,25 @@ namespace InfermedicaAPI.Services
             File.AppendAllLines(targetCsvFile, new List<string> { headerLine });
             foreach (InfermedicaLabTest labTest in labTests)
             {
-                List<string> body = new List<string>(){labTest.Id, labTest.Name, labTest.Category, String.Join(",", labTest.ResultItems.Select(ri=>String.Format("id:{0}, type:{1}", ri.Id, ri.Type)))};
+                List<string> body = new List<string>{labTest.Id, labTest.Name, labTest.Category, String.Join(",", labTest.ResultItems.Select(ri=>String.Format("id:{0}, type:{1}", ri.Id, ri.Type)))};
+                string bodyLine = String.Join("\t", body.ToArray());
+                File.AppendAllLines(targetCsvFile, new List<string> { bodyLine });
+            }
+        }
+
+        public static void ToCsvFile(string targetCsvFile, IEnumerable<InfermedicaRiskFactor> riskFactors)
+        {
+            File.Delete(targetCsvFile);
+
+            IEnumerable<string> allExtraKeys = riskFactors.SelectMany(condition => condition.Extras.Keys).Distinct();
+            List<string> header = new List<string> { "Id", "Name", "Question", "Category", "Sex", "ImageUrl", "ImageSource" };
+            header.AddRange(allExtraKeys);
+            string headerLine = String.Join("\t", header.ToArray());
+            File.AppendAllLines(targetCsvFile, new List<string> { headerLine });
+            foreach (InfermedicaRiskFactor riskFactor in riskFactors)
+            {
+                List<string> body = new List<string> { riskFactor.Id, riskFactor.Name, riskFactor.Question, riskFactor.Category, riskFactor.Sex.ToString(), riskFactor.ImageUrl, riskFactor.ImageSource };
+                body.AddRange(allExtraKeys.Select(extraKey => riskFactor.Extras.ContainsKey(extraKey) ? riskFactor.Extras[extraKey] : ""));
                 string bodyLine = String.Join("\t", body.ToArray());
                 File.AppendAllLines(targetCsvFile, new List<string> { bodyLine });
             }

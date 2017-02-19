@@ -20,6 +20,7 @@ namespace InfermedicaAPI.Client.Demo
             GetInfoSample();
             GetAllConditions();
             GetAllLabTests();
+            GetAllRiskFactors();
 //            //FirstRequestDemo_HttpClient();
 //            FirstRequestDemo_WebRequest();
 //            //FirstRequestDemo_Info_WebRequest();
@@ -50,6 +51,15 @@ namespace InfermedicaAPI.Client.Demo
             List<InfermedicaLabTest> labTests = infermedica.GetLabTests();
             Console.WriteLine("Lab tests count: {0}", labTests.Count);
             InfermedicaExport.ToCsvFile(@"labTests.csv", labTests);
+        }
+        static void GetAllRiskFactors()
+        {
+            string appId = ConfigurationManager.AppSettings["App-Id"];
+            string appKey = ConfigurationManager.AppSettings["App-Key"];
+            Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
+            List<InfermedicaRiskFactor> riskFactors = infermedica.GetRiskFactors();
+            Console.WriteLine("Risk factors count: {0}", riskFactors.Count);
+            InfermedicaExport.ToCsvFile(@"riskFactors.csv", riskFactors);
         }
 
         // https://developer.infermedica.com/docs/quickstart

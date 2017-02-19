@@ -50,7 +50,6 @@ namespace InfermedicaAPI.Client.Demo
             List<InfermedicaLabTest> labTests = infermedica.GetLabTests();
             Console.WriteLine("Lab tests count: {0}", labTests.Count);
             InfermedicaExport.ToCsvFile(@"labTests.csv", labTests);
-//            //Console.WriteLine("Last update model: {0}, Conditions count: {1}", info.LastModelUpdate, info.ConditionsCount);
         }
 
         // https://developer.infermedica.com/docs/quickstart

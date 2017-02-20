@@ -25,6 +25,8 @@ namespace InfermedicaAPI.Client.Demo
             InfermedicaLabTest labTest = GetLabTest("lt_335");
             Console.WriteLine("get labTest #{0} ({1})", labTest.Id, labTest.Name);
             GetAllRiskFactors();
+            InfermedicaRiskFactor riskFactor = GetRiskFactor("p_4");
+            Console.WriteLine("get riskFactor #{0} ({1})", riskFactor.Id, riskFactor.Name);
             GetAllSymptoms();
             InfermedicaSymptom symptom = GetSymptom("s_277");
             Console.WriteLine("get symptom #{0} ({1})", symptom.Id, symptom.Name);
@@ -85,6 +87,14 @@ namespace InfermedicaAPI.Client.Demo
             List<InfermedicaRiskFactor> riskFactors = infermedica.GetRiskFactors();
             Console.WriteLine("Risk factors count: {0}", riskFactors.Count);
             InfermedicaExport.ToCsvFile(@"riskFactors.csv", riskFactors);
+        }
+        static InfermedicaRiskFactor GetRiskFactor(string riskFactorId)
+        {
+            string appId = ConfigurationManager.AppSettings["App-Id"];
+            string appKey = ConfigurationManager.AppSettings["App-Key"];
+            Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
+            InfermedicaRiskFactor riskFactor = infermedica.GetRiskFactor(riskFactorId);
+            return riskFactor;
         }
         static void GetAllSymptoms()
         {

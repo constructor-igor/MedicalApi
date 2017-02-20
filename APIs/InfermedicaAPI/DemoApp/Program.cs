@@ -19,6 +19,8 @@ namespace InfermedicaAPI.Client.Demo
         {
             GetInfoSample();
             GetAllConditions();
+            InfermedicaCondition condition = GetCondition("c_764");
+            Console.WriteLine("get condition #{0} ({1})", condition.Id, condition.Name);
             GetAllLabTests();
             GetAllRiskFactors();
 //            //FirstRequestDemo_HttpClient();
@@ -42,6 +44,15 @@ namespace InfermedicaAPI.Client.Demo
             List<InfermedicaCondition> conditions = infermedica.GetConditions();
             Console.WriteLine("Conditions count: {0}", conditions.Count);
             InfermedicaExport.ToCsvFile(@"conditions.csv", conditions);
+        }
+
+        static InfermedicaCondition GetCondition(string conditionID)
+        {
+            string appId = ConfigurationManager.AppSettings["App-Id"];
+            string appKey = ConfigurationManager.AppSettings["App-Key"];
+            Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
+            InfermedicaCondition condition = infermedica.GetCondition(conditionID);
+            return condition;
         }
         static void GetAllLabTests()
         {

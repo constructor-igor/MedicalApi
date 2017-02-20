@@ -16,12 +16,21 @@ namespace InfermedicaAPI.DataProviders
             Directory.CreateDirectory(m_cacheFolder);
         }
         #region IInfermedicaDataProvider
-        public string GetRequest(string getName)
+        public string GetRequest(string mainName)
         {
-            string infoFile = Path.Combine(m_cacheFolder, String.Format("{0}.json", getName));
+            string infoFile = Path.Combine(m_cacheFolder, String.Format("{0}.json", mainName));
             if (File.Exists(infoFile))
                 return File.ReadAllText(infoFile);
-            string infoContent = m_actualProvider.GetRequest(getName);
+            string infoContent = m_actualProvider.GetRequest(mainName);
+            File.WriteAllText(infoFile, infoContent);
+            return infoContent;
+        }
+        public string GetRequest(string mainName, string secondName)
+        {
+            string infoFile = Path.Combine(m_cacheFolder, String.Format("{0}-{1}.json", mainName, secondName));
+            if (File.Exists(infoFile))
+                return File.ReadAllText(infoFile);
+            string infoContent = m_actualProvider.GetRequest(mainName, secondName);
             File.WriteAllText(infoFile, infoContent);
             return infoContent;
         }

@@ -16,9 +16,9 @@ namespace InfermedicaAPI.DataProviders
             m_appKey = appKey;
         }
         #region IInfermedicaDataProvider
-        public string GetRequest(string getName)
+        public string GetRequest(string mainName)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(String.Format("https://api.infermedica.com/v2/{0}", getName));
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(String.Format("https://api.infermedica.com/v2/{0}", mainName));
             httpWebRequest.Method = "GET";
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Headers.Add("App-Id", m_appId);
@@ -26,6 +26,17 @@ namespace InfermedicaAPI.DataProviders
 
             string responseContent = GetResponse(httpWebRequest);
             return responseContent;            
+        }
+        public string GetRequest(string mainName, string secondName)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(String.Format("https://api.infermedica.com/v2/{0}/{1}", mainName, secondName));
+            httpWebRequest.Method = "GET";
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Headers.Add("App-Id", m_appId);
+            httpWebRequest.Headers.Add("App-Key", m_appKey);
+
+            string responseContent = GetResponse(httpWebRequest);
+            return responseContent;
         }
         #endregion
         private string GetResponse(HttpWebRequest httpWebRequest)

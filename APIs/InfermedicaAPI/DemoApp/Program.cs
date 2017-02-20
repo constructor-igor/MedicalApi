@@ -26,6 +26,9 @@ namespace InfermedicaAPI.Client.Demo
             Console.WriteLine("get labTest #{0} ({1})", labTest.Id, labTest.Name);
             GetAllRiskFactors();
             GetAllSymptoms();
+            InfermedicaSymptom symptom = GetSymptom("s_277");
+            Console.WriteLine("get symptom #{0} ({1})", symptom.Id, symptom.Name);
+
 //            //FirstRequestDemo_HttpClient();
 //            FirstRequestDemo_WebRequest();
 //            //FirstRequestDemo_Info_WebRequest();
@@ -49,12 +52,12 @@ namespace InfermedicaAPI.Client.Demo
             InfermedicaExport.ToCsvFile(@"conditions.csv", conditions);
         }
 
-        static InfermedicaCondition GetCondition(string conditionID)
+        static InfermedicaCondition GetCondition(string conditionId)
         {
             string appId = ConfigurationManager.AppSettings["App-Id"];
             string appKey = ConfigurationManager.AppSettings["App-Key"];
             Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
-            InfermedicaCondition condition = infermedica.GetCondition(conditionID);
+            InfermedicaCondition condition = infermedica.GetCondition(conditionId);
             return condition;
         }
         static void GetAllLabTests()
@@ -66,12 +69,12 @@ namespace InfermedicaAPI.Client.Demo
             Console.WriteLine("Lab tests count: {0}", labTests.Count);
             InfermedicaExport.ToCsvFile(@"labTests.csv", labTests);
         }
-        static InfermedicaLabTest GetLabTest(string labTestID)
+        static InfermedicaLabTest GetLabTest(string labTestId)
         {
             string appId = ConfigurationManager.AppSettings["App-Id"];
             string appKey = ConfigurationManager.AppSettings["App-Key"];
             Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
-            InfermedicaLabTest labTest = infermedica.GetLabTest(labTestID);
+            InfermedicaLabTest labTest = infermedica.GetLabTest(labTestId);
             return labTest;
         }
         static void GetAllRiskFactors()
@@ -91,6 +94,14 @@ namespace InfermedicaAPI.Client.Demo
             List<InfermedicaSymptom> symptoms = infermedica.GetSymptoms();
             Console.WriteLine("Symptoms count: {0}", symptoms.Count);
             InfermedicaExport.ToCsvFile(@"symptoms.csv", symptoms);
+        }
+        static InfermedicaSymptom GetSymptom(string symptomId)
+        {
+            string appId = ConfigurationManager.AppSettings["App-Id"];
+            string appKey = ConfigurationManager.AppSettings["App-Key"];
+            Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
+            InfermedicaSymptom symptom = infermedica.GetSymptom(symptomId);
+            return symptom;
         }
 
         // https://developer.infermedica.com/docs/quickstart

@@ -107,6 +107,19 @@ namespace InfermedicaAPI.Services
                 return allValues[text];
             throw new ArgumentException(String.Format("Unexpected value ({0}) of {1}", text, typeof(T).Name));
         }
+
+        public static string AsString(Sex sex)
+        {
+            switch (sex)
+            {
+                case Sex.Male:
+                    return "male";
+                case Sex.Female:
+                    return "female";
+                default:
+                    return "";
+            }
+        }
     }
 }
 

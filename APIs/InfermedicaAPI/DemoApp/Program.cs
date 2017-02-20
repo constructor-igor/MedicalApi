@@ -31,6 +31,12 @@ namespace InfermedicaAPI.Client.Demo
             InfermedicaSymptom symptom = GetSymptom("s_277");
             Console.WriteLine("get symptom #{0} ({1})", symptom.Id, symptom.Name);
 
+            List<InfermedicaSearchResponseItem> responseItems = GetSearch("headache", Sex.Male, 8);
+            foreach (InfermedicaSearchResponseItem responseItem in responseItems)
+            {
+                Console.WriteLine("{0}: labels={1}", responseItem.Id, String.Join(",", responseItem.Labels));
+            }
+
 //            //FirstRequestDemo_HttpClient();
 //            FirstRequestDemo_WebRequest();
 //            //FirstRequestDemo_Info_WebRequest();
@@ -112,6 +118,18 @@ namespace InfermedicaAPI.Client.Demo
             Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
             InfermedicaSymptom symptom = infermedica.GetSymptom(symptomId);
             return symptom;
+        }
+
+        static List<InfermedicaSearchResponseItem> GetSearch(string phrase, Sex sex, int maxResults)
+        {
+            // samples
+            //https://api.infermedica.com/v2/search?phrase=headache&max_results=8&type=risk_factor
+            //https://api.infermedica.com/v2/search?phrase=headache&sex=male&max_results=8&type=risk_factor
+
+            string appId = ConfigurationManager.AppSettings["App-Id"];
+            string appKey = ConfigurationManager.AppSettings["App-Key"];
+            Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
+            return infermedica.GetSearch(phrase, sex, maxResults);
         }
 
         // https://developer.infermedica.com/docs/quickstart

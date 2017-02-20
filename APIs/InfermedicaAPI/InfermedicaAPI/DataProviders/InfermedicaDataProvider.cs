@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using InfermedicaAPI.Interfaces;
 
@@ -30,6 +32,18 @@ namespace InfermedicaAPI.DataProviders
         public string GetRequest(string mainName, string secondName)
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(String.Format("https://api.infermedica.com/v2/{0}/{1}", mainName, secondName));
+            httpWebRequest.Method = "GET";
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Headers.Add("App-Id", m_appId);
+            httpWebRequest.Headers.Add("App-Key", m_appKey);
+
+            string responseContent = GetResponse(httpWebRequest);
+            return responseContent;
+        }
+        public string GetRequest(string mainName, Dictionary<string, string> arguments)
+        {
+            string argumentsContainer = String.Join("&", arguments.Select(a => String.Format("{0}={1}", a.Key, a.Value)));
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(String.Format("https://api.infermedica.com/v2/{0}?{1}", mainName, argumentsContainer));
             httpWebRequest.Method = "GET";
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Headers.Add("App-Id", m_appId);

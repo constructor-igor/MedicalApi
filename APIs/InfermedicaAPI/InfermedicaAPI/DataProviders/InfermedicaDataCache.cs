@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using InfermedicaAPI.Interfaces;
 
 namespace InfermedicaAPI.DataProviders
@@ -31,6 +33,16 @@ namespace InfermedicaAPI.DataProviders
             if (File.Exists(infoFile))
                 return File.ReadAllText(infoFile);
             string infoContent = m_actualProvider.GetRequest(mainName, secondName);
+            File.WriteAllText(infoFile, infoContent);
+            return infoContent;
+        }
+        public string GetRequest(string mainName, Dictionary<string, string> arguments)
+        {
+            string argumentsContainer = String.Join("&", arguments.Select(a => String.Format("{0}={1}", a.Key, a.Value)));
+            string infoFile = Path.Combine(m_cacheFolder, String.Format("{0}-{1}.json", mainName, argumentsContainer));
+            if (File.Exists(infoFile))
+                return File.ReadAllText(infoFile);
+            string infoContent = m_actualProvider.GetRequest(mainName, arguments);
             File.WriteAllText(infoFile, infoContent);
             return infoContent;
         }

@@ -22,6 +22,8 @@ namespace InfermedicaAPI.Client.Demo
             InfermedicaCondition condition = GetCondition("c_764");
             Console.WriteLine("get condition #{0} ({1})", condition.Id, condition.Name);
             GetAllLabTests();
+            InfermedicaLabTest labTest = GetLabTest("lt_335");
+            Console.WriteLine("get labTest #{0} ({1})", labTest.Id, labTest.Name);
             GetAllRiskFactors();
 //            //FirstRequestDemo_HttpClient();
 //            FirstRequestDemo_WebRequest();
@@ -62,6 +64,14 @@ namespace InfermedicaAPI.Client.Demo
             List<InfermedicaLabTest> labTests = infermedica.GetLabTests();
             Console.WriteLine("Lab tests count: {0}", labTests.Count);
             InfermedicaExport.ToCsvFile(@"labTests.csv", labTests);
+        }
+        static InfermedicaLabTest GetLabTest(string labTestID)
+        {
+            string appId = ConfigurationManager.AppSettings["App-Id"];
+            string appKey = ConfigurationManager.AppSettings["App-Key"];
+            Infermedica infermedica = new Infermedica(new InfermedicaDataCache(new InfermedicaDataProvider(appId, appKey), @"..\..\Cache"));
+            InfermedicaLabTest labTest = infermedica.GetLabTest(labTestID);
+            return labTest;
         }
         static void GetAllRiskFactors()
         {

@@ -43,6 +43,17 @@ namespace InfermedicaAPI.Services
             {"absent", InfermedicaLabTest.ItemType.Absent},
             {"present", InfermedicaLabTest.ItemType.Present}
         };
+        private static readonly Dictionary<string, ParentRelation> parentRelationList = new Dictionary<string, ParentRelation>
+        {
+            {"base", ParentRelation.Base},
+            {"duration", ParentRelation.Duration},
+            {"severity", ParentRelation.Severity},
+            {"character", ParentRelation.Character},
+            {"exacerbating_factor", ParentRelation.ExacerbatingFactor},
+            {"diminishing_factor", ParentRelation.DiminishingFactor},
+            {"location", ParentRelation.Location},
+            {"radiation", ParentRelation.Radiation}
+        };
 
         public static Prevalence ToPrevalence(string text)
         {
@@ -81,12 +92,30 @@ namespace InfermedicaAPI.Services
             return ConvertTo(text.Value<string>(), resultTypeList);
         }
 
+        public static ParentRelation ToParentRelation(JToken text)
+        {
+            return text != null && text.Value<string>()!=null ? ToParentRelation(Convert.ToString(text.Value<string>())) : ParentRelation.NULL;
+        }
+        public static ParentRelation ToParentRelation(string text)
+        {
+            return ConvertTo(text, parentRelationList);
+        }
+
         public static T ConvertTo<T>(string text, Dictionary<string, T> allValues)
         {
             if (allValues.ContainsKey(text))
                 return allValues[text];
             throw new ArgumentException(String.Format("Unexpected value ({0}) of {1}", text, typeof(T).Name));
         }
-
     }
 }
+
+//        public static DateTimeOffset ParseIso8601(string iso8601String)
+//        {
+//            return DateTimeOffset.ParseExact(
+//                iso8601String,
+//                new string[] { "yyyy-MM-dd'T'HH:mm:ss.FFFK" },
+//                CultureInfo.InvariantCulture,
+//                DateTimeStyles.None);
+//        }
+//    }

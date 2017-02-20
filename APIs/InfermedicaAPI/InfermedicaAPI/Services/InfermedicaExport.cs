@@ -60,5 +60,23 @@ namespace InfermedicaAPI.Services
                 File.AppendAllLines(targetCsvFile, new List<string> { bodyLine });
             }
         }
+
+        public static void ToCsvFile(string targetCsvFile, List<InfermedicaSymptom> symptoms)
+        {
+            File.Delete(targetCsvFile);
+
+            IEnumerable<string> allExtraKeys = symptoms.SelectMany(condition => condition.Extras.Keys).Distinct();
+            List<string> header = new List<string> { "Id", "Name", "Question", "Category", "Sex", "ImageUrl", "ImageSource", "ParentID", "ParentRelation" };
+            header.AddRange(allExtraKeys);
+            string headerLine = String.Join("\t", header.ToArray());
+            File.AppendAllLines(targetCsvFile, new List<string> { headerLine });
+            foreach (InfermedicaSymptom symptom in symptoms)
+            {
+                List<string> body = new List<string> { symptom.Id, symptom.Name, symptom.Question, symptom.Category, symptom.Sex.ToString(), symptom.ImageUrl, symptom.ImageSource, symptom.ParentId, symptom.ParentRelation==ParentRelation.NULL?"":symptom.ParentRelation.ToString() };
+                body.AddRange(allExtraKeys.Select(extraKey => symptom.Extras.ContainsKey(extraKey) ? symptom.Extras[extraKey] : ""));
+                string bodyLine = String.Join("\t", body.ToArray());
+                File.AppendAllLines(targetCsvFile, new List<string> { bodyLine });
+            }
+        }
     }
 }

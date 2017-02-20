@@ -48,6 +48,7 @@
     <Compile Include="Data\InfermedicaCondition.cs" />
     <Compile Include="Data\InfermedicaLabTest.cs" />
     <Compile Include="Data\InfermedicaRiskFactor.cs" />
+    <Compile Include="Data\InfermedicaSymptom.cs" />
     <Compile Include="Services\InfermedicaConvert.cs" />
     <Compile Include="Interfaces\IInfermedicaDataProvider.cs" />
     <Compile Include="Infermedica.cs" />

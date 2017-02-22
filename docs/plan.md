@@ -1,6 +1,8 @@
 
 **Spint 1 completed**
 
+[Retro] (https://github.com/constructor-igor/MedicalApi/issues/17)
+
 **Sprint 1** (08/02 - 22/02)
 - [x] Create github repository.
 - [x] Plan sprint tasks.

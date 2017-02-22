@@ -1,3 +1,6 @@
+
+**Spint 1 completed**
+
 **Sprint 1** (08/02 - 22/02)
 - [x] Create github repository.
 - [x] Plan sprint tasks.
